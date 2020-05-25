@@ -1,18 +1,6 @@
 #![feature(const_generics)]
 #![allow(incomplete_features)]
 
-pub struct Sim;
-
-impl Sim {
-    pub fn new() -> Sim {
-        Sim
-    }
-
-    pub fn port<const N: PortName>(&mut self) -> Port<N> {
-        Port::new()
-    }
-}
-
 #[derive(Eq, PartialEq)]
 pub enum PortName {
     A,
