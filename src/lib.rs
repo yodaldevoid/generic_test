@@ -6,24 +6,18 @@ pub enum PortName {
     A,
 }
 
-pub struct Pin<const N: PortName, const P: usize>;
+pub struct Pin<const N: PortName>;
 
-pub struct AdcPin<const N: PortName, const P: usize> {
-    _pin: Pin<N, P>,
+pub struct AdcPin<const N: PortName> {
+    _pin: Pin<N>,
 }
 
-pub trait ToAdcPin<const N: PortName, const P: usize> {
-    fn to_adc(self) -> AdcPin<N, P>;
+pub trait ToAdcPin<const N: PortName> {
+    fn to_adc(self) -> AdcPin<N>;
 }
 
-impl ToAdcPin<{PortName::A}, 0> for Pin<{PortName::A}, 0> {
-    fn to_adc(self) -> AdcPin<{PortName::A}, 0> {
-        AdcPin { _pin: self }
-    }
-}
-
-impl ToAdcPin<{PortName::A}, 1> for Pin<{PortName::A}, 1> {
-    fn to_adc(self) -> AdcPin<{PortName::A}, 1> {
+impl ToAdcPin<{PortName::A}> for Pin<{PortName::A}> {
+    fn to_adc(self) -> AdcPin<{PortName::A}> {
         AdcPin { _pin: self }
     }
 }
