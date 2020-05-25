@@ -8,10 +8,10 @@ pub enum PortName {
 
 pub struct Pin<const N: PortName>;
 
-pub trait DoThing<const N: PortName> {
+pub trait DoThing {
     fn do_thing(self);
 }
 
-impl DoThing<{PortName::A}> for Pin<{PortName::A}> {
+impl DoThing for Pin<{PortName::A}> {
     fn do_thing(self) {}
 }
